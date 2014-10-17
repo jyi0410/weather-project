@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+ 
+    <title> Home </title>
+   
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="application/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="application/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style>
+     	
+       	body{
+		 	background-image : url(${image});
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 1070;
+		 	height: $("#bodybody").scrollHeight;
+			opacity : 0.8;
+			position : absolute;
+		}   
+		a#trans {
+			background: #fff; color: #aa0000; padding: 3px; -webkit-transition: all 1s linear;
+		}
+    	a#trans:hover { 
+    		background: #220077; color: #fff;
+    	}
+    	#trans-nav { 
+    		list-style-type: none; width : 1200px; height: 40px; padding: 0; margin: 0;
+    	}
+    	#trans-nav li { 
+    		float: left; position: relative; padding: 0; line-height: 40px; background: #5a8078 url(nav-bg.png) repeat-x 0 0; 
+    	}
+    	#trans-nav li:hover {
+    		 background-position: 0 -40px; 
+    	}
+    	#trans-nav li a { 
+    		display: block; padding: 0 15px; color: #fff; text-decoration: none; 
+    	}
+    	#trans-nav li a:hover { 
+    		color: #a3f1d7; 
+    	}
+    	#trans-nav li ul { 
+    		opacity: 0; position: absolute; left: 0; width: 8em; background: #63867f; list-style-type: none; padding: 0; margin: 0; 
+    	}
+    	#trans-nav li:hover ul { 
+    		opacity: 1; 
+    	}
+    	#trans-nav li ul li { 
+    		float: none; position: static; height: 0; line-height: 0; background: none;
+    	 }
+    	#trans-nav li:hover ul li { 
+    		height: 30px; line-height: 30px; 
+    	}
+    	#trans-nav li ul li a { 
+    		background: #63867f; 
+    	}
+    	#trans-nav li ul li a:hover { 
+    		background: #5a8078; 
+    	}
+    	#trans-nav li { 
+    		-webkit-transition: all 0.2s; 
+    	}
+    	#trans-nav li a { 
+    		-webkit-transition: all 0.5s; 
+    	}
+    	#trans-nav li ul { 
+    		-webkit-transition: all 1s; 
+    	}
+    	#trans-nav li ul li { 
+    		-webkit-transition: height 0.5s; 
+    	}
+   </style>
+   </head>
+
+  <body id="bodybody">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id="forecast" class="navbar-brand" href="http://weather.media.daum.net/">Weather Forecast </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/weather/parallax">Home</a></li>
+            <li id="travel"><a href="/weather/travel">Travel Weather</a></li>
+            <li><a href="/weather/flight">Flight information</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+
+<div style="margin-top:50px;" id="cssmenu">
+	<ul id="trans-nav" style="margin: 100px 100px 100px 70px;"">
+		<li><a href="#">서울/경기</a>
+			<ul>
+				<li><a href="/weather/home?district1=서울/경기&district2=서울">서울</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=강화">강화</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=김포">김포</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=인천">인천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=시흥">시흥</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=의정부">의정부</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=고양">고양</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=파주">파주</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=양주">양주</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=동두천">동두천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=연천">연천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=포천">포천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=가평">가평</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=구리">구리</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=남양주">남양주</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=양평">양평</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=수원">수원</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=안양">안양</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=오산">오산</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=화성">화성</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=성남">성남</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=평택">평택</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=이천">이천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=광주">광주</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=안산">안산</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=부천">부천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=문산">문산</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=하남">하남</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=과천">과천</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=광명">광명</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=의왕">의왕</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=군포">군포</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=안성">안성</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=용인">용인</a></li>
+				<li><a href="/weather/home?district1=서울/경기&district2=여주">여주</a></li>
+			</ul>
+			</li>
+		<li><a href="#">서해5도</a>
+			<ul>
+				<li><a href="/weather/home?district1=서해5도&district2=백령도">백령도</a></li>
+				<li><a href="/weather/home?district1=서해5도&district2=소청도">소청도</a></li>
+				<li><a href="/weather/home?district1=서해5도&district2=연평도">연평도</a></li>
+			</ul>
+		</li>
+		<li><a href="#">강원영서</a>
+			<ul>
+				<li><a href="/weather/home?district1=강원영서&district2=철원">철원</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=화천">화천</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=인제">인제</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=양구">양구</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=춘천">춘천</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=홍천">홍천</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=원주">원주</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=횡성">횡성</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=영월">영월</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2정선">정선</a></li>
+				<li><a href="/weather/home?district1=강원영서&district2=평창">평창</a></li>
+			</ul>
+		</li>
+		<li><a href="#">강원영동</a>
+			<ul>
+				<li><a href="/weather/home?district1=강원영동&district2=강원산간">강원산간</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=대관령">대관령</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=태백">태백</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=속초">속초</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=고성">고성</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=양양">양양</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=강릉">강릉</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=동해">동해</a></li>
+				<li><a href="/weather/home?district1=강원영동&district2=삼척">삼척</a></li>
+			</ul>
+		</li>
+		<li><a href="#">충청북도</a>
+			<ul>
+				<li><a href="/weather/home?district1=충청북도&district2=충주">충주</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=진천">진천</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=음성">음성</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=제천">제천</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=단양">단양</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=청주">청주</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=보은">보은</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=괴산">괴산</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=추풍령">추풍령</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=영동">영동</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=옥천">옥천</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=증평">증평</a></li>
+				<li><a href="/weather/home?district1=충청북도&district2=청원">청원</a></li>
+			</ul>
+		</li>
+		<li><a href="#">충청남도</a>
+			<ul>
+				<li><a href="/weather/home?district1=충청남도&district2=서산">서산</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=태안">태안</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=당진">당진</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=홍성">홍성</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=보령">보령</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=서천">서천</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=천안">천안</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=아산">아산</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=대전">대전</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=공주">공주</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=부여">부여</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=청양">청양</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=금산">금산</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=논산">논산</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=예산">예산</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=계룡">계룡</a></li>
+				<li><a href="/weather/home?district1=충청남도&district2=세종">세종</a></li>
+			</ul>
+		</li>
+		<li><a href="#">경상북도</a>
+			<ul>
+				<li><a href="/weather/home?district1=경상북도&district2=울진">울진</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=영덕">영덕</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=포항">포항</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=경주">경주</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=문경">문경</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=상주">상주</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=예천">예천</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=영주">영주</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=봉화">봉화</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=영양">영양</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=안동">안동</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=의성">의성</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=청송">청송</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=김천">김천</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=구미">구미</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=군위">군위</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=고령">고령</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=성주">성주</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=대구">대구</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=영천">영천</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=경산">경산</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=청도">청도</a></li>
+				<li><a href="/weather/home?district1=경상북도&district2=칠곡">칠곡</a></li> 
+			</ul>
+		</li>
+		<li><a href="#">경상남도</a>
+			<ul>
+				<li><a href="/weather/home?district1=경상남도&district2=울산">울산</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=양산">양산</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=부산">부산</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=창원">창원</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=진해">진해</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=김해">김해</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=통영">통영</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=사천">사천</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=거제">거제</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=고성">고성</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=남해">남해</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=함양">함양</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=거창">거창</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=합천">합천</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=밀양">밀양</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=의령">의령</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=함안">함안</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=창녕">창녕</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=진주">진주</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=하동">하동</a></li>
+				<li><a href="/weather/home?district1=경상남도&district2=산청">산청</a></li>
+			</ul>
+		</li>
+		<li><a href="#">울릉도/독도</a>
+			<ul>
+				<li><a href="/weather/home?district1=울릉도/독도&district2=울릉도">울릉도</a></li>
+				<li><a href="/weather/home?district1=울릉도/독도&district2=독도">독도	</a></li>
+			</ul>
+		</li>
+		<li><a href="#">전라북도</a>
+			<ul>
+				<li><a href="/weather/home?district1=전라북도&district2=전주">전주</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=익산">익산</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=정읍">정읍</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=장수">장수</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=무주">무주</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=진안">진안</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=남원">남원</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=임실">임실</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=순창">순창</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=군산">군산</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=김제">김제</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=고창">고창</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=부안">부안</a></li>
+				<li><a href="/weather/home?district1=전라북도&district2=완주">완주</a></li>
+			</ul>
+		</li>
+		<li><a href="#">전라남도</a>
+			<ul>
+				<li><a href="/weather/home?district1=전라남도&district2=완도">완도</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=해남">해남</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=강진">강진</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=장흥">장흥</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=여수">여수</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=광양">광양</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=고흥">고흥</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=보성">보성</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=순천">순천</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=광주">광주</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=장성">장성</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=나주">나주</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=담양">담양</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=구례">구례</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=곡성">곡성</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=흑산도">흑산도</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=함평">함평</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=영광">영광</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=진도">진도</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=목포">목포</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=영암">영암</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=신안">신안</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=무안">무안</a></li>
+				<li><a href="/weather/home?district1=전라남도&district2=화순">화순</a></li>
+			</ul>
+		</li>
+		<li><a href="#">제주도</a>
+			<ul>
+				<li><a href="/weather/home?district1=제주도&district2=제주">제주</a></li>
+				<li><a href="/weather/home?district1=제주도&district2=윗세오름">윗세오름</a></li>
+				<li><a href="/weather/home?district1=제주도&district2=서귀포">서귀포</a></li>
+				<li><a href="/weather/home?district1=제주도&district2=고산">고산</a></li>
+				<li><a href="/weather/home?district1=제주도&district2=성산포">성산포</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</div>
+<!-- 	<font color="black" size="5"><marquee> ${marqueement} </marquee></font> -->
+
+<div style="margin:160px 100px 100px 600px;" id="ment">
+	<font color="white" size="12" > $!{temp} </font> 
+	<font color="white" size="6" > °C </font><br>
+	<font color="white" size="3"> $!{ment} | $!{ment2} <br></font>
+	<!-- <font color="white" size="5"> $!{Hotment} <br></font> -->
+	<font color="white" size="5"> 오후에는 $!{pmtext} <br></font>
+	<font color="white" size="7"> $!{WeatherMent} </font>
+	
+</div>
+
+
+	<!-- $avg.get(0) -->
+	<!-- 위 오른쪽 아래 왼쪽 순  -->
+	<div style="margin:400px 100px 50px 200px; width: 600px; height: 300px;" id="chart_div"></div>
+	<div style="margin:0px 20px 50px 20px; width: 400px; height: 200px;" id="chart_div2"></div>
+	<!-- <nav>
+		<ul style="margin:30px 200px 0px 200px;">
+			<li><a href="/weather/home?content=온도">온도</a>
+			<li><a href="/weather/home?content=강수">강수</a>
+			<li><a href="/weather/home?content=습도">습도</a>
+			</li>
+		</ul>
+	</nav> -->
+	<div style="margin:0px 5px 5px 0px; width: 1100px; height: 400px;" id="chart_div2"></div>
+	<!-- <div style="margin:100px 200px; width: 300px; height: 200px;" id="chart_div3"></div> -->
+	
+	<table border="1" style="margin:100px 10px 100px 160px;" Align="center" Cellpadding="10px" Cellspacing="10px" Height="300px" Width="800px">
+		<tr >
+		<td colspan=6 Align="center"><font size="5"> 주간 날씨</font></td>
+		</tr>
+		<tr Align="center" bgcolor="#A9DDFA">
+ 			<td><font size="3" color="black"> 오늘 </font> / <font color="#9E9D9D">$date.get(0)일</font></td>
+ 			<td colspan=4><img src=$todayicon height="40" width="40"> $state </td>
+ 			<td>$temp°C</td>
+		</tr>
+		<tr Align="center">
+	 		<td><font size="3" color="black"> 내일 </font> /<font color="#9E9D9D"> $date.get(1)일</font></td>
+	 		<td rowspan = 5 bgcolor="#FFB6B6"> AM </td>
+	 		<td><img src=$amicon.get(0) height="40" width="40">  $amstate.get(0) </td>
+	 		<td><img src=$pmicon.get(0) height="40" width="40">  $pmstate.get(0) </td>
+	 		<td rowspan = 5 bgcolor="#D7B8FD"> PM </td>
+	 		<td>$tmpm.get(0)°C</td>
+		</tr> 
+		<tr Align="center">
+	 		<td><font size="3" color="black"> $day.get(2) </font>/<font color="#9E9D9D"> $date.get(2)일</font> </td>
+	 		<td><img src=$amicon.get(1) height="40" width="40">  $amstate.get(1) </td>
+	 		<td><img src=$pmicon.get(1) height="40" width="40">  $pmstate.get(1) </td>
+	 		<td>$tmpm.get(1)°C</td>
+		</tr>
+		<tr Align="center">
+	 		<td><font size="3" color="black">$day.get(3) </font>/<font color="#9E9D9D"> $date.get(3)일</font></td>
+	 		<td><img src=$amicon.get(2) height="40" width="40">  $amstate.get(2) </td>
+	 		<td><img src=$pmicon.get(2) height="40" width="40">  $pmstate.get(2) </td>
+	 		<td>$tmpm.get(2)°C</td>
+		</tr>
+		<tr Align="center">
+	 		<td><font size="3" color="black">$day.get(4)</font> /<font color="#9E9D9D"> $date.get(4)일</font></td>
+	 		<td><img src=$amicon.get(3) height="40" width="40">  $amstate.get(3) </td>
+	 		<td><img src=$pmicon.get(3) height="40" width="40">  $pmstate.get(3) </td>
+	 		<td>$tmpm.get(3)°C</td>
+		</tr>
+		<tr Align="center">
+	 		<td><font size="3" color="black">$day.get(5)</font> /<font color="#9E9D9D"> $date.get(5)일</font></td>
+	 		<td><img src=$amicon.get(4) height="40" width="40">  $amstate.get(4) </td>
+	 		<td><img src=$pmicon.get(4) height="40" width="40">  $pmstate.get(4) </td>
+	 		<td>$tmpm.get(4)°C</td>
+		</tr>
+	</table>
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+	/* window.open(URL,WindowName[,WindowFeatures]); */
+	//window.open("/weather/custom","_blank","top=300,left=500,width=400,height=200"+",location=0,menubar=0");
+
+	
+	 //bar chart 막대그래프
+	google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+    	var data = google.visualization.arrayToDataTable([
+					['City', 'Average', { role: 'style' }],
+					['Seoul', 21, '#b87333'],            // RGB value
+					['Busan', 46, 'silver'],            // English color name
+					['Daegu', 15, 'gold'],
+					['Ulsan', 3, 'color: #08AC5D' ],
+					['Cheongju', 43, 'red' ],
+					['Jeju', 12, 'blue' ]// CSS-style declaration
+		]);
+
+
+    	
+      var options = {
+        title: '< City Temperature Average >',
+        vAxis: {title: 'City',  titleTextStyle: {color: 'red'}}
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    } 
+    
+    
+    //Line chart 선그래프 
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart2);
+    function drawChart2() {
+      var data = google.visualization.arrayToDataTable([
+        ['City' ,'${district2}',{ role: 'annotation' }],
+        ['오늘', $temp, '$temp°'],
+        ['$day.get(1)', $tmpm.get(0), '$tmpm.get(0)°'],
+        ['$day.get(2)', $tmpm.get(1), '$tmpm.get(1)°'],
+        ['$day.get(3)', $tmpm.get(2), '$tmpm.get(2)°'],
+        ['$day.get(4)', $tmpm.get(3), '$tmpm.get(3)°'],
+        ['$day.get(5)', $tmpm.get(4), '$tmpm.get(4)°'],
+        ['$day.get(6)', $tmpm.get(5), '$tmpm.get(5)°'],
+      ]);
+
+      var options = {
+	        title: '< Temperature Flow >',
+	        curveType: 'function',
+	        backgroundColor : {
+	        	stroke : "#666"
+	        },
+	        /* tooltip : {textStyle: {color: '#FF0000'}, showColorCode: true}, */
+	        annotations: {
+		        textStyle: {
+		        	  fontName: 'Times-Roman',
+		        	  fontSize: 18,
+		        	  bold: true,
+		        	  italic: true,
+		        	  color: '#7D8283',     // The color of the text.
+		        	  /* auraColor: '#d799ae',  */// The color of the text outline.
+		        	  opacity: 0.8    
+		        },
+		       
+		      /* axisTitlesPosition : 'out' */
+		      /*   boxStyle: {
+		            stroke: '#888',           // Color of the box outline.
+		            strokeWidth: 1,           // Thickness of the box outline.
+		            rx: 10,                   // x-radius of the corner curvature.
+		            ry: 10,                   // y-radius of the corner curvature.
+		            gradient: {               // Attributes for linear gradient fill.
+		              color1: '#fbf6a7',      // Start color for gradient.
+		              color2: '#33b679',      // Finish color for gradient.
+		              x1: '0%', y1: '0%',     // Where on the boundary to start and end the
+		              x2: '100%', y2: '100%', // color1/color2 gradient, relative to the
+		                                      // upper left corner of the boundary.
+		              useObjectBoundingBoxUnits: true // If true, the boundary for x1, y1,
+		                                              // x2, and y2 is the box. If false,
+		                                              // it's the entire chart.
+		            }
+		        } */
+	        },
+	        vAxis : {
+	        	textPosition: 'none',
+	        	gridlines:  {color: 'red', count: 0}
+	        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+
+      chart.draw(data, options);
+      
+      var rectTags = $("rect");
+      rectTags.each(function(idx, el){
+    	  var jqel = $(el);
+    	  if(jqel.attr("width")){
+              if (parseInt(jqel.attr("width")) == 1) {
+            	  jqel.attr("width", 0);
+              }
+    	  }
+      });
+    }
+
+/* 
+    //Histogram 히스토그램
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart3);
+    function drawChart3() {
+        var data = google.visualization.arrayToDataTable([
+					['City', 'Average'],
+					['Seoul', $avg.get(0)],
+					['Busan', $avg.get(1)],
+					['Daegu', $avg.get(2)],
+					['Ulsan', $avg.get(3)],
+					['Cheongju', $avg.get(4)],
+					['Jeju', $avg.get(5)],
+		]);
+
+      var options = {
+        title: 'City Temperature Average',
+        legend: { position: 'none' },
+        colors: ['green'],
+      };
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_div3')); 
+       chart.draw(data, options);   
+    } 
+ 	
+	 */
+	
+
+	
+</script>
+</body>
+  
+</html>

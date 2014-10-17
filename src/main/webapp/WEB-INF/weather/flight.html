@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+
+<title>Flight</title>
+
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script type="application/javascript"
+	src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="application/javascript"
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/weather/js/calendar.js"></script>
+<style>
+body {
+	background-image:
+		url('http://www.aldogroup.com/img/DREAMS%20TAKE%20FLIGHT/BANNER_DREAMS-TAKE-FLIGHT.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 1070;
+	height: $('#bodybody') .scrollHeight;
+	opacity: 0.8;
+	position: absolute;
+}
+
+nav ul ul {
+	display: none;
+}
+
+nav ul li:hover>ul {
+	display: block;
+}
+
+nav ul {
+	background: #05A3FC;
+	background: linear-gradient(top, #05A3FC 0%, #fff 100%);
+	background: -moz-linear-gradient(top, #05A3FC 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #05A3FC 0%, #fff 100%);
+	box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.15);
+	padding: 0 20px;
+	border-radius: 10px;
+	list-style: none;
+	position: relative;
+	display: inline-table;
+}
+
+nav ul:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+nav ul ul {
+	background: #75B7F0;
+	border-radius: 0px;
+	padding: 0 20px;
+	position: absolute;
+	top: 100%;
+}
+
+nav ul ul li {
+	float: none;
+	border-top: 1px solid #6b727c;
+	border-bottom: 1px solid #575f6a;
+	position: relative;
+}
+
+nav ul ul li a {
+	padding: 5px 10px;
+	color: #fff;
+}
+
+nav ul ul li a:hover {
+	background: #4b545f;
+}
+
+nav ul li {
+	float: left;
+}
+
+nav ul li:hover {
+	background: #4b545f;
+	background: linear-gradient(top, #4f5964 0%, #5f6975 40%);
+	background: -moz-linear-gradient(top, #4f5964 0%, #5f6975 40%);
+	background: -webkit-linear-gradient(top, #4f5964 0%, #5f6975 40%);
+}
+
+nav ul li:hover a {
+	color: #fff;
+}
+
+nav ul li a {
+	display: block;
+	padding: 25px 40px;
+	color: #fff;
+	text-decoration: none;
+}
+
+nav ul ul ul {
+	position: absolute;
+	left: 100%;
+	top: 0;
+}
+
+a#trans {
+	background: #fff;
+	color: #aa0000;
+	padding: 3px;
+	-webkit-transition: all 1s linear;
+}
+
+a#trans:hover {
+	background: #220077;
+	color: #fff;
+}
+
+#trans-nav {
+	list-style-type: none;
+	width: 1200px;
+	height: 40px;
+	padding: 100;
+	margin: 10px 100px 0px 10px;
+	position: relative;
+}
+
+#trans-nav li {
+	float: left;
+	position: relative;
+	padding: 0;
+	line-height: 40px;
+	background: #358FDD url(nav-bg.png) repeat-x 0 0;
+}
+
+#trans-nav li:hover {
+	background-position: 0 -40px;
+}
+
+#trans-nav li a {
+	display: block;
+	padding: 0 15px;
+	color: #fff;
+	text-decoration: none;
+}
+
+#trans-nav li a:hover {
+	color: #a3f1d7;
+}
+
+#trans-nav li ul {
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	width: 8em;
+	background: #358FDD;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#trans-nav li:hover ul {
+	opacity: 1;
+}
+
+#trans-nav li ul li {
+	float: none;
+	position: static;
+	height: 0;
+	line-height: 0;
+	background: none;
+}
+
+#trans-nav li:hover ul li {
+	height: 30px;
+	line-height: 30px;
+}
+
+#trans-nav li ul li a {
+	background: #358FDD;
+}
+
+#trans-nav li ul li a:hover {
+	background: #358FDD;
+}
+
+#trans-nav li {
+	-webkit-transition: all 0.2s;
+}
+
+#trans-nav li a {
+	-webkit-transition: all 0.5s;
+}
+
+#trans-nav li ul {
+	-webkit-transition: all 1s;
+}
+
+#trans-nav li ul li {
+	-webkit-transition: height 0.5s;
+}
+</style>
+</head>
+
+<body id="bodybody">
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a id="forecast" class="navbar-brand"
+					href="http://weather.media.daum.net/">Weather Forecast </a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/weather/parallax">Home</a></li>
+					<li id="travel"><a href="/weather/travel">Travel Weather</a></li>
+					<li><a href="/weather/flight">Flight information</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<!-- <input type="text" id="startDate" name="startDate" value="가는 날"
+		style="margin: 80px 10px 10px 10px;" / >
+	<input onclick="fnPopUpCalendar(startDate,startDate,'yyyy-mm-dd');"
+		type="button" value="click" />
+
+	<input type="text" id="endDate" name="endDate" value="오는 날"
+		style="margin-top: 60px;" />
+	<input onclick="fnPopUpCalendar(endDate,endDate,'yyyy-mm-dd');"
+		type="button" value="click" /> -->
+
+	<div style="margin: 100px 10px 0px 100px;" id="ment">
+		<font color="white" size="10">Do you want to know the Weather?<br>
+			<br>
+		</font>
+	</div>
+
+	<div id="cssmenu" class="district1"
+		style="width: 150px; height: 50px; float: left; margin: 0px 100px 100px 160px;">
+		<ul id="trans-nav">
+			<li><a href="#">출발지</a>
+				<ul>
+					<!-- <li><a href="#">김포</a></li> -->
+					<li><a href="#">인천</a></li>
+					<!-- <li><a href="#">원주</a></li>
+					<li><a href="#">양양</a></li>
+					<li><a href="#">예천</a></li> -->
+					<li><a href="#">청주</a></li>
+					<!-- <li><a href="#">군산</a></li>-->
+					<li><a href="#">대구</a></li>
+					<li><a href="#">포항</a></li>
+					<!--<li><a href="#">광주</a></li>
+					<li><a href="#">목포</a></li>
+					<li><a href="#">여수</a></li>
+					<li><a href="#">사천</a></li> -->
+					<li><a href="#">울산</a></li>
+					<!-- <li><a href="#">김해</a></li> -->
+					<li><a href="#">제주</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	<div id="cssmenu" class="district2"
+		style="width: 150px; height: 50px; float: left; margin: 0px 100px 100px 200px;">
+		<ul id="trans-nav">
+			<li><a href="#">도착지</a>
+				<ul>
+					<!-- <li><a href="#">김포</a></li> -->
+					<li><a href="#">인천</a></li>
+					<!-- <li><a href="#">원주</a></li>
+					<li><a href="#">양양</a></li>
+					<li><a href="#">예천</a></li> -->
+					<li><a href="#">청주</a></li>
+					<!-- <li><a href="#">군산</a></li>-->
+					<li><a href="#">대구</a></li>
+					<li><a href="#">포항</a></li>
+					<!--<li><a href="#">광주</a></li>
+					<li><a href="#">목포</a></li>
+					<li><a href="#">여수</a></li>
+					<li><a href="#">사천</a></li> -->
+					<li><a href="#">울산</a></li>
+					<!-- <li><a href="#">김해</a></li> -->
+					<li><a href="#">제주</a></li>
+				</ul></li>
+		</ul>
+	</div>
+
+	<font color="black" size="4">
+		<div id="fonttest1"
+			style="margin: 150px 100px 100px 300px; width: 300px; height: 100px; float: left;">
+			<font color="white" size="3"></font>
+		</div>
+
+
+		<div id="fonttest2"
+			style="margin: 150px 50px 10px 0px; width: 280px; height: 100px; float: left;">
+			<font color="white" size="3"> </font>
+		</div>
+	</font>
+
+
+	<table border="1" style="margin: 650px 100px 220px 400px;"
+		Align="center" Cellpadding="10px" Cellspacing="10px" Height="100px"
+		Width="400px">
+		<tr>
+			<td colspan=3 Align="center"><font size="4"> 오늘의 비행기 운항 정보 </font></td>
+		</tr>
+		<tr Align="center">
+			<td><font size="3" color="black"> $!{yymmdd} </font></td>
+			<td><font color="black">$!{day}요일</font></td>
+			<td> % </td>
+			</font>
+		</tr>
+		<tr Align="center">
+			<td id= where ></td>
+			<td id ="flightstate"> </td>
+			<td id = "percentage"> </td>
+		</tr>
+	</table>
+
+
+	<script type="text/javascript">
+		jQuery(".district1 ul li ul li a").click(
+				function() {
+					var departAirport = $(this).html();
+					console.log(departAirport);
+					jQuery(".district2 ul li ul li a").click(
+							function() {
+								var arriveAirport = $(this).html();
+								console.log(arriveAirport);
+								jQuery.ajax({
+									url : "/api/weather/flight.json",
+									type : "GET",
+									dataType : "json",
+									contentType : "application/json",
+									data : {
+										district1 : departAirport,
+										district2 : arriveAirport
+									},
+									success : function(res) {
+										console.log(res);
+										$("#fonttest1").html(
+												res.viewData.DAment1 + "<br>"+"<br>"
+														+ res.viewData.DAment2
+														+ "<br>"
+														+ res.viewData.DAment3
+														+ "<br>"
+														+ res.viewData.DAment4
+														+ "<br>");
+										$("#fonttest2").html(
+												res.viewData.AAment1 + "<br>"+"<br>"
+														+ res.viewData.AAment2
+														+ "<br>"
+														+ res.viewData.AAment3
+														+ "<br>"
+														+ res.viewData.AAment4
+														+ "<br>");
+										$("#where").html(
+												res.viewData.district1+" => "+res.viewData.district2+" 행 비행기"
+										);
+										$("#flightstate").html(
+												res.viewData.flightstate
+										);
+										$("#percentage").html(
+												res.viewData.percent
+										);
+									},
+									error : function(err) {
+										alert("fail");
+										console.log(err);
+									}
+								});
+							});
+				});
+	</script>
+</body>
+
+
+
+
+</html>

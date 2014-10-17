@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title> Weather </title>
+   
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="application/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="application/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style>
+/*      	
+      	body{
+		 	background-image : url('http://images.iop.org/objects/phw/news/thumb/17/9/7/clouds.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 1070;
+		 	height: $('#contentText').scrollHeight;
+			opacity : 0.8;
+			position : absolute;
+			
+		}   */
+	</style>
+  </head>
+
+  <body>
+    <div style="margin:30px 10px 10px 10px;" id="start">
+	     <font size = "3"> ${checkweather}</font><br>
+	     <font size = "2"> 
+	    <input class ="hot" type="checkbox" name="group1" value="1">매우 그렇지 않다.
+		<input class ="hot" type="checkbox" name="group1" value="2">그렇지 않다.
+		<input class ="hot" type="checkbox" name="group1" value="3"> 보통이다.<br>
+		<input class ="hot" type="checkbox" name="group1" value="4"> 그렇다.
+		<input class ="hot" type="checkbox" name="group1" value="5"> 매우 그렇다.<br>
+		<input type="button" value="확인" id ="hotBtn" onclick="window.close()" href='http://localhost:8080/weather/home';> <br><br><br>
+
+<!-- 		<input class ="hot" type="checkbox" name="group1" value="매우 그렇지 않다.">매우 그렇지 않다.
+		<input class ="hot" type="checkbox" name="group1" value="그렇지 않다.">그렇지 않다.
+		<input class ="hot" type="checkbox" name="group1" value="보통이다."> 보통이다.<br>
+		<input class ="hot" type="checkbox" name="group1" value="그렇다."> 그렇다.
+		<input class ="hot" type="checkbox" name="group1" value="매우 그렇다."> 매우 그렇다.<br>
+		<input type="button" value="확인" id ="hotBtn" onclick="window.close()" href='http://localhost:8080/weather/home';> <br><br><br> -->
+		
+		
+		</font> 
+    </div>
+    
+	<script type="text/javascript">
+	   
+	   $(document).ready(function() {
+		    $('input[type="checkbox"][name="group1"]').click(function(){
+		        //클릭 이벤트 발생한 요소가 선택 상태일 경우
+		        //체크된 요소 확인후 복수개 선택되있을 경우 체크 해제
+		        if ($(this).prop('checked') 
+		        && $('input[type="checkbox"][name="group1"]:checked').size()>1) {
+		            $(this).prop('checked', false);
+		        alert('두개 이상 선택할 수 없습니다.');
+		        }
+		    });
+		});
+		
+		
+		jQuery(".hot").click(function(){
+			var hotBtn = jQuery("#hotBtn");
+			hotBtn.click(function(){
+		      var hot = $(".hot:checked").val();  
+		      console.log(hot);
+		      jQuery.ajax({
+					url:"/weather/home",
+					type: "GET",
+					data : {	
+						hot : hot
+						},
+					success: function(res){
+						alert("success");
+						console.log(res);
+					},error: function(err){
+						alert("fail");
+						console.log(err);
+					}
+				});
+			 });  
+		}); 	
+	</script>
+
+  </body>
+  
+</html>

@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>parallax</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<link rel="author" href="https://plus.google.com/u/0/109859280204979591787/about"/>
+		<link rel="stylesheet" href="/resources/weather/css/normalize.css">
+		<link rel="stylesheet" href="/resources/weather/css/main.css">
+ 		<script src="/resources/weather/js/vendor/modernizr-2.7.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script type="application/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script type="application/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+			}
+			a#trans {
+				background: #fff; color: #aa0000; padding: 3px; -webkit-transition: all 1s linear;
+			}
+			a#trans:hover { 
+				background: #220077; color: #fff;
+			}
+			#trans-nav { 
+				list-style-type: none; width : 1200px; height: 40px; padding: 0; margin: 0;
+			}
+			#trans-nav li { 
+				float: left; position: relative; padding: 0; line-height: 40px;  background: #959899 url(nav-bg.png) repeat-x 0 0;  
+			}
+			#trans-nav li:hover {
+				background-position: 0 -40px; 
+			}
+			#trans-nav li a { 
+				display: block; padding: 0 15px; color: #fff; text-decoration: none; 
+			}
+			#trans-nav li a:hover { 
+				color: black; 
+			}
+			#trans-nav li ul { 
+				opacity: 0; position: absolute; left: 0; width: 8em; background: #959899  ; list-style-type: none; padding: 0; margin: 0; 
+			}
+			#trans-nav li:hover ul { 
+				opacity: 1; 
+			}
+			#trans-nav li ul li { 
+				float: none; position: static; height: 0; line-height: 0; background: none;
+			}
+			#trans-nav li:hover ul li { 
+				height: 30px; line-height: 30px; 
+			}
+			#trans-nav li ul li a { 
+				background: #959899  ; 
+			}
+			#trans-nav li ul li a:hover { 
+				background: #959899; 
+			}
+			#trans-nav li { 
+			-webkit-transition: all 0.2s; 
+			}
+			#trans-nav li a { 
+				-webkit-transition: all 0.5s; 
+			}
+			#trans-nav li ul { 
+				-webkit-transition: all 1s; 
+			}
+			#trans-nav li ul li { 
+				-webkit-transition: height 0.5s; 
+			}
+			#cssmenu{
+				position:fixed; top:50px;left:0px;z-index:10;width:100%;background-color:#959899;
+			}
+			main{
+				padding-top:90px;width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a id="forecast" class="navbar-brand" href="http://weather.media.daum.net/">Weather Forecast </a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/weather/parallax">Home</a></li>
+						<li id="travel"><a href="/weather/travel">Travel Weather</a></li>
+						<li><a href="/weather/flight">Flight information</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="cssmenu">
+			<ul id="trans-nav">
+				<li><a href="#">서울/경기</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=서울">서울</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=강화">강화</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=김포">김포</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=인천">인천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=시흥">시흥</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=의정부">의정부</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=고양">고양</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=파주">파주</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=양주">양주</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=동두천">동두천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=연천">연천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=포천">포천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=가평">가평</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=구리">구리</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=남양주">남양주</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=양평">양평</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=수원">수원</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=안양">안양</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=오산">오산</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=화성">화성</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=성남">성남</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=평택">평택</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=이천">이천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=광주">광주</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=안산">안산</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=부천">부천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=문산">문산</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=하남">하남</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=과천">과천</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=광명">광명</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=의왕">의왕</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=군포">군포</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=안성">안성</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=용인">용인</a></li>
+						<li><a href="/weather/parallax?district1=서울/경기&district2=여주">여주</a></li>
+					</ul>
+				</li>
+				<li><a href="#">서해5도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=서해5도&district2=백령도">백령도</a></li>
+						<li><a href="/weather/parallax?district1=서해5도&district2=소청도">소청도</a></li>
+						<li><a href="/weather/parallax?district1=서해5도&district2=연평도">연평도</a></li>
+					</ul>
+				</li>
+				<li><a href="#">강원영서</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=강원영서&district2=철원">철원</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=화천">화천</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=인제">인제</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=양구">양구</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=춘천">춘천</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=홍천">홍천</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=원주">원주</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=횡성">횡성</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=영월">영월</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2정선">정선</a></li>
+						<li><a href="/weather/parallax?district1=강원영서&district2=평창">평창</a></li>
+					</ul>
+				</li>
+				<li><a href="#">강원영동</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=강원영동&district2=강원산간">강원산간</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=대관령">대관령</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=태백">태백</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=속초">속초</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=고성">고성</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=양양">양양</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=강릉">강릉</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=동해">동해</a></li>
+						<li><a href="/weather/parallax?district1=강원영동&district2=삼척">삼척</a></li>
+					</ul>
+				</li>
+				<li><a href="#">충청북도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=충청북도&district2=충주">충주</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=진천">진천</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=음성">음성</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=제천">제천</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=단양">단양</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=청주">청주</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=보은">보은</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=괴산">괴산</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=추풍령">추풍령</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=영동">영동</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=옥천">옥천</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=증평">증평</a></li>
+						<li><a href="/weather/parallax?district1=충청북도&district2=청원">청원</a></li>
+					</ul>
+				</li>
+				<li><a href="#">충청남도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=충청남도&district2=서산">서산</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=태안">태안</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=당진">당진</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=홍성">홍성</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=보령">보령</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=서천">서천</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=천안">천안</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=아산">아산</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=대전">대전</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=공주">공주</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=부여">부여</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=청양">청양</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=금산">금산</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=논산">논산</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=예산">예산</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=계룡">계룡</a></li>
+						<li><a href="/weather/parallax?district1=충청남도&district2=세종">세종</a></li>
+					</ul>
+				</li>
+				<li><a href="#">경상북도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=경상북도&district2=울진">울진</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=영덕">영덕</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=포항">포항</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=경주">경주</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=문경">문경</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=상주">상주</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=예천">예천</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=영주">영주</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=봉화">봉화</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=영양">영양</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=안동">안동</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=의성">의성</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=청송">청송</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=김천">김천</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=구미">구미</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=군위">군위</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=고령">고령</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=성주">성주</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=대구">대구</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=영천">영천</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=경산">경산</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=청도">청도</a></li>
+						<li><a href="/weather/parallax?district1=경상북도&district2=칠곡">칠곡</a></li> 
+					</ul>
+				</li>
+				<li><a href="#">경상남도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=경상남도&district2=울산">울산</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=양산">양산</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=부산">부산</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=창원">창원</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=진해">진해</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=김해">김해</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=통영">통영</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=사천">사천</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=거제">거제</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=고성">고성</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=남해">남해</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=함양">함양</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=거창">거창</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=합천">합천</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=밀양">밀양</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=의령">의령</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=함안">함안</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=창녕">창녕</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=진주">진주</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=하동">하동</a></li>
+						<li><a href="/weather/parallax?district1=경상남도&district2=산청">산청</a></li>
+					</ul>
+				</li>
+				<li><a href="#">울릉도/독도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=울릉도/독도&district2=울릉도">울릉도</a></li>
+						<li><a href="/weather/parallax?district1=울릉도/독도&district2=독도">독도	</a></li>
+					</ul>
+				</li>
+				<li><a href="#">전라북도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=전라북도&district2=전주">전주</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=익산">익산</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=정읍">정읍</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=장수">장수</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=무주">무주</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=진안">진안</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=남원">남원</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=임실">임실</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=순창">순창</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=군산">군산</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=김제">김제</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=고창">고창</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=부안">부안</a></li>
+						<li><a href="/weather/parallax?district1=전라북도&district2=완주">완주</a></li>
+					</ul>
+				</li>
+				<li><a href="#">전라남도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=전라남도&district2=완도">완도</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=해남">해남</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=강진">강진</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=장흥">장흥</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=여수">여수</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=광양">광양</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=고흥">고흥</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=보성">보성</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=순천">순천</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=광주">광주</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=장성">장성</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=나주">나주</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=담양">담양</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=구례">구례</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=곡성">곡성</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=흑산도">흑산도</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=함평">함평</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=영광">영광</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=진도">진도</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=목포">목포</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=영암">영암</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=신안">신안</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=무안">무안</a></li>
+						<li><a href="/weather/parallax?district1=전라남도&district2=화순">화순</a></li>
+					</ul>
+				</li>
+				<li><a href="#">제주도</a>
+					<ul>
+						<li><a href="/weather/parallax?district1=제주도&district2=제주">제주</a></li>
+						<li><a href="/weather/parallax?district1=제주도&district2=윗세오름">윗세오름</a></li>
+						<li><a href="/weather/parallax?district1=제주도&district2=서귀포">서귀포</a></li>
+						<li><a href="/weather/parallax?district1=제주도&district2=고산">고산</a></li>
+						<li><a href="/weather/parallax?district1=제주도&district2=성산포">성산포</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<main>
+			<section id="slide-1" class="homeSlide">
+				<div class="bcg" 
+					style="background-image:url($image)"
+					data-center="background-position: 50% 0px;"
+					data-top-bottom="background-position: 50% -100px;"
+					data-anchor-target="#slide-1">
+						<div class="hsContainer">
+							<div class="hsContent"
+								data-center="bottom: 350px; opacity: 1"
+								data-top="bottom: 1200px; opacity: 0"
+								data-anchor-target="#slide-1 h2"
+								style="margin: 100px 0px 30px 0px;">
+									<h2> Today $date.get(0)일 $day.get(0)요일 <br><br>
+										$!{temp} °C <br>
+										<font size="3"> 오후에는 $!{pmtext} <br> <br></font>
+										<font size="7" color = "black">오늘은 $!{WeatherMent}</font>
+									</h2>
+							</div>
+							<div class = "hsContent1"
+								id ="chart_div"
+								data-center="bottom: 400px; opacity: 1"
+								data-top="bottom: 1200px; opacity: 0"
+								style = "margin: 180px 100px 100px 0px;"
+								width = "800px;"
+								height = "600px;">
+								
+							</div>
+							
+							<div class = "hsContent2"
+								id ="chart_div2"
+								data-center = "bottom: 400px; opacity:1"
+								data-top= "bottom: 1200px; opacity:0"
+								style = "margin: 300px 0px 100px 600px;"
+								width = "800px;"
+								height = "600px;">
+								
+							</div>
+						</div>
+				</div>
+			</section>
+			
+			<section id="slide-11">
+				<div class="bcg" 
+					data-0="background-color:rgb(1,27,59);" 
+					data-top="background-color:(0,0,0);"  
+					data-anchor-target="#slide-11">
+					<div class="hsContainer">
+						<div class="hsContent" style="margin:-100px 200px 100px 100px;" >
+							<h2 data-center="opacity: 1" 
+								data--200-bottom="opacity: 0" 
+								data-260-top="opacity: 1" 
+								data-106-top="opacity: 0" 
+								data-anchor-target="#slide-11 h2">Weather Forecast
+							</h2>
+							<p data-center="opacity: 1" 
+								data--200-bottom="opacity: 0" 
+								data-260-top="opacity: 1" 
+								data-106-top="opacity: 0" 
+								data-anchor-target="#slide-11 h2">Do you know the weather forecast? Scrolling down !
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-2" class="homeSlide">
+				<div class="bcg"
+					style="background-image:url($futureimage.get(0))"
+					data-center="background-position: 50% 0px;"
+					data-top-bottom="background-position: 50% -100px;"
+					data-bottom-top="background-position: 50% 100px;"
+					data-anchor-target="#slide-2">
+					<div class="hsContainer">
+						<div class="hsContent"
+							data-center="opacity: 1"
+							data-center-top="opacity: 0"
+							data--100-bottom="opacity: 0;"
+							data-anchor-target="#slide-2">
+							<h2> Tomorrow $date.get(1)일 $day.get(1)요일 <br><br>
+								$tmpm.get(0)°C <br><br>
+								<font size="7" color = "black"> $futurement.get(0)</font>
+							</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-3" class="homeSlide">
+				<div class="bcg" 
+					style="background-image:url($futureimage.get(1))"
+					data-center="background-position: 0px 50%;" 
+					data-bottom-top="background-position: -40px 50%;"
+					data-top-bottom="background-position: 0px 40%;"
+					data-anchor-target="#slide-3">
+					<div class="hsContainer">
+						<div class="hsContent">
+							<div class="plaxEl"
+								style="margin:-100px 200px 100px 100px;"  
+								data-106-top="opacity: 0"
+								data--30p-top="opacity: 1;"
+								data--60p-top="opacity: 0;" 
+								data-bottom="opacity: 1; position: fixed; top: 206px; width: 100%; left: 0;"  
+								data-anchor-target="#slide-3">
+								<h2>  $date.get(2)일 $day.get(2)요일 Day <br><br>
+									$tmpm.get(1)°C <br><br>
+									<font size="7" color = "black">$futurement.get(1)</font>
+								</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-4" class="homeSlide homeSlideTall">
+				<div class="bcg" 
+					style="background-image:url($futureimage.get(2))"
+					data-center="background-position: 50% 0px;"
+					data-bottom-top="background-position: 50% 100px;"
+					data-top-bottom="background-position: 50% -100px;"
+					data-anchor-target="#slide-4">
+					<div class="curtainContainer">
+						<div class="curtain" 
+							data-bottom-top="opacity: 0" 
+							data-106-top="height: 1%; opacity: 0; top: -10%;" 
+							data-center="height: 100%; opacity: 0.5; top: 0%;" 
+							data-anchor-target="#slide-4"></div>
+						<div class="copy"
+							data-bottom-top="opacity: 0"
+							data--100-bottom="opacity: 0" 
+							data--280-bottom="opacity: 1;"
+							data-280-top="opacity: 1;"
+							data-106-top="opacity: 0;"
+							data-anchor-target="#slide-4 .copy">
+							<h2><font color="#fff8de"> $date.get(3)일 $day.get(3)요일 Day <br><br>
+								$tmpm.get(2)°C <br><br></font>
+								<font size="7" color = "black">$futurement.get(2)</font>
+							</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-5" class="homeSlide">
+				<div class="bcg" 
+					style="background-image:url($futureimage.get(3))"
+					data-center="background-position: 50% 0px;"
+					data-top-bottom="background-position: 50% -100px;"
+					data-anchor-target="#slide-5">
+					<div class="hsContainer">
+						<div class="hsContent"
+							data-center="bottom: 200px; opacity: 1"
+							data-top="bottom: 1200px; opacity: 0"
+							data-anchor-target="#slide-5 h2">
+							<h2> $date.get(4)일 $day.get(4)요일 Day <br><br>
+								$tmpm.get(3)°C <br><br>
+								<font size="7" color = "black">$futurement.get(3)</font>
+							</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-6" class="homeSlide">
+				<div class="bcg" 
+					style="background-image:url($futureimage.get(4))"
+					data-center="background-position: 0px 50%;" 
+					data-bottom-top="background-position: 0px 40%;"
+					data-top-bottom="background-position: -40px 50%;"
+					data-anchor-target="#slide-6">
+					<div class="hsContainer">
+						<div class="hsContent">
+							<div class="plaxEl"
+								style="margin:-100px 200px 100px 100px;"  
+								data-106-top="opacity: 0"
+								data--30p-top="opacity: 1;"
+								data--60p-top="opacity: 0;" 
+								data-bottom="opacity: 1; position: fixed; top: 206px; width: 100%; left: 0;"  
+								data-anchor-target="#slide-6">
+								<h2>  $date.get(5)일 $day.get(5)요일 Day <br><br>
+									$tmpm.get(4)°C <br><br>
+									<font size="7" color = "black"> $futurement.get(4)</font>
+								</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-7" class="homeSlide homeSlideTall">
+				<div class="bcg" 
+					style="background-image:url($futureimage.get(5))"
+					data-center="background-position: 50% 0px;"
+					data-bottom-top="background-position: 50% 100px;"
+					data-top-bottom="background-position: 50% -100px;"
+					data-anchor-target="#slide-7">
+					<div class="curtainContainer">
+						<div class="curtain" 
+							data-bottom-top="opacity: 0" 
+							data-106-top="height: 1%; opacity: 0; top: -10%;" 
+							data-center="height: 100%; opacity: 0.5; top: 0%;" 
+							data-anchor-target="#slide-7"></div>
+						<div class="copy"
+							data-bottom-top="opacity: 0"
+							data--100-bottom="opacity: 0" 
+							data--280-bottom="opacity: 1;"
+							data-280-top="opacity: 1;"
+							data-106-top="opacity: 0;"
+							data-anchor-target="#slide-7 .copy">
+							<h2><font color="#fff8de"> $date.get(6)일 $day.get(6)요일 Day <br><br>
+									$tmpm.get(5)°C <br><br>
+								</font>
+								<font size="7" color = "black">$futurement.get(5)</font>
+							</h2>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-12">
+				<div class="bcg" 
+					style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcROGR-Qc6945vnYMWe7KZz1rUuDYWD02AzrfS6359tiwm7Bp5INTA);
+							background-repeat: no-repeat;
+							background-size: cover;"
+					data-0="background-color:black;" 
+					data-top="background-color:black;"  
+					data-anchor-target="#slide-11">
+					<div class="hsContainer">
+						<div class="hsContent" style="margin:-150px 0px 100px -300px;" >
+							<table border="1" width="600px" height="150px">
+								<tr>
+								<td colspan=6 Align="center" bgcolor="white"><font size="5" color="black"> 주간 날씨</font></td>
+								</tr>
+								<tr Align="center" bgcolor="white">
+									<td><font size="3" color="black"> 오늘 </font> / <font color="black">$date.get(0)일</font></td>
+									<td colspan=4><font color="black"><img src=$todayicon height="40" width="40"> $state</font></td>
+									<td><font color="black">$temp°C</font></td>
+								</tr>
+								<tr Align="center" bgcolor="white">
+									<td><font size="3" color="black"> 내일 </font> /<font color="black"> $date.get(1)일</font></td>
+									<td rowspan = 5 bgcolor="#CACCCE"> AM </td>
+									<td><img src=$amicon.get(0) height="40" width="40"> <font color="black">$amstate.get(0) </font></td>
+									<td><img src=$pmicon.get(0) height="40" width="40"> <font color="black">$pmstate.get(0) </font></td>
+									<td rowspan = 5 bgcolor="#CACCCE"> PM </td>
+									<td><font color="black">$tmpm.get(0)°C</font></td>
+								</tr> 
+								<tr Align="center" bgcolor="white">
+									<td><font size="3" color="black"> $day.get(2) </font>/<font color="black"> $date.get(2)일</font> </td>
+									<td><img src=$amicon.get(1) height="40" width="40"> <font color="black"> $amstate.get(1) </font></td>
+									<td><img src=$pmicon.get(1) height="40" width="40"> <font color="black"> $pmstate.get(1) </font></td>
+									<td><font color="black">$tmpm.get(1)°C</font></td>
+								</tr>
+								<tr Align="center" bgcolor="white">
+									<td><font size="3" color="black">$day.get(3) </font>/<font color="black"> $date.get(3)일</font></td>
+									<td><img src=$amicon.get(2) height="40" width="40"> <font color="black">$amstate.get(2) </font></td>
+									<td><img src=$pmicon.get(2) height="40" width="40"> <font color="black"> $pmstate.get(2) </font></td>
+									<td><font color="black">$tmpm.get(2)°C</font></td>
+								</tr>
+								<tr Align="center" bgcolor="white">
+									<td><font size="3" color="black">$day.get(4)</font> /<font color="black"> $date.get(4)일</font></td>
+									<td><img src=$amicon.get(3) height="40" width="40"> <font color="black"> $amstate.get(3) </font></td>
+									<td><img src=$pmicon.get(3) height="40" width="40"> <font color="black"> $pmstate.get(3) </font></td>
+									<td><font color="black">$tmpm.get(3)°C</font></td>
+								</tr>
+								<tr Align="center" bgcolor="white">
+									<td><font size="3" color="black">$day.get(5)</font> /<font color="black"> $date.get(5)일</font></td>
+									<td><img src=$amicon.get(4) height="40" width="40"> <font color="black"> $amstate.get(4)</font></td>
+									<td><img src=$pmicon.get(4) height="40" width="40"> <font color="black"> $pmstate.get(4)</font></td>
+									<td><font color="black">$tmpm.get(4)°C</font></td>
+								</tr>
+							</table>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="slide-8" class="homeSlide homeSlideTall2">
+				<div class="bcg">
+					&nbsp;
+				</div>
+				<div class="bcg bcg2" 
+					data-bottom-top="opacity: 0;" 
+					data--33p-top="opacity: 0;" 
+					data--66p-top="opacity: 1;" 
+					data-anchor-target="#slide-8">
+					<div class="hsContainer">
+						<div class="hsContent" 
+							data-bottom-top="opacity: 0;" 
+							data-center="opacity: 1" 
+							data-anchor-target="#slide-8">
+								<h2>Weather Forecast</h2>
+								<p>Do you know the weather forecast? Scrolling down !</p>
+						</div>
+					</div>
+				</div>
+				<div class="bcg bcg3" 
+					data-300-bottom="opacity: 0;" 
+					data-100-bottom="opacity: 1;" 
+					data-anchor-target="#slide-8">
+					<div class="hsContainer">
+						<div class="hsContent" 
+							data-100-bottom="opacity: 0;" 
+							data-bottom="opacity: 1;" 
+							data-anchor-target="#slide-8">
+							<h2>The End</h2>
+							<p>Not enough parallax goodness? Let me know in the comments or hit me up at <a href="https://www.twitter.com/ihatetomatoes" target="_blank">@ihatetomatoes</a>.<br><br></p>
+							<p> Go to Part 2, where we will add <a href="https://ihatetomatoes.net/how-to-create-a-parallax-scrolling-website-part-2/">one page navigation</a>.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		
+		<script src="/resources/weather/js/vendor/jquery-1.9.1.min.js"></script>
+		<script src="/resources/weather/js/imagesloaded.js"></script>
+		<script src="/resources/weather/js/skrollr.js"></script>
+		<script src="/resources/weather/js/_main.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		
+		<script type="text/javascript">
+			
+			
+			//bar chart 막대그래프
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+							['Region', '평균',{role:'annotation'},{ role: 'style' }],
+							['서울/경기', $avg.get(0), '$avg.get(0)', '#b87333'],            // RGB value
+							['서해5도', $avg.get(1), '$avg.get(1)', 'silver'],            // English color name
+							['영서', $avg.get(2), '$avg.get(2)', 'gold'],
+							['영동', $avg.get(3),  '$avg.get(3)','color: #08AC5D' ],
+							['충북', $avg.get(4), '$avg.get(4)', 'red' ],
+							['충남', $avg.get(5), '$avg.get(5)', 'blue' ],
+							['경북', $avg.get(6), '$avg.get(6)', 'yellow' ],
+							['경남', $avg.get(7), '$avg.get(7)', 'green' ],
+							['울릉/독도', $avg.get(8), '$avg.get(8)', 'skyblue' ],
+							['전북', $avg.get(9), '$avg.get(9)', 'pink' ],
+							['전남', $avg.get(10), '$avg.get(10)', 'purple' ],
+							['제주', $avg.get(11), '$avg.get(11)', 'grey' ]
+				]);
+				var options = {
+							title: '< 지역별 평균 기온 >',
+							vAxis: {
+								title: 'Region',
+								titleTextStyle:{
+									color: 'red'
+								}
+							}
+				};
+				var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+				chart.draw(data, options);
+			} 
+	
+			//Line chart 선그래프 
+			function drawChart2() {
+				var data = google.visualization.arrayToDataTable([
+					['City' ,'${district2}',{ role: 'annotation' }],
+					['오늘', $temp, '$temp°'],
+					['$day.get(1)', $tmpm.get(0), '$tmpm.get(0)°'],
+					['$day.get(2)', $tmpm.get(1), '$tmpm.get(1)°'],
+					['$day.get(3)', $tmpm.get(2), '$tmpm.get(2)°'],
+					['$day.get(4)', $tmpm.get(3), '$tmpm.get(3)°'],
+					['$day.get(5)', $tmpm.get(4), '$tmpm.get(4)°'],
+					['$day.get(6)', $tmpm.get(5), '$tmpm.get(5)°'],
+				]);
+				var options = {
+					title: '< Temperature Flow >',
+					curveType: 'function',
+					backgroundColor : {
+						stroke : "#666"
+					},
+					annotations: {
+						textStyle: {
+							fontName: 'Times-Roman',
+							fontSize: 18,
+							bold: true,
+							italic: true,
+							color: '#7D8283',
+							opacity: 0.8
+						}
+					},
+					vAxis : {
+						textPosition: 'none',
+						gridlines:  {
+							color: 'red',
+							count: 0
+						}
+					}
+				};
+				
+				var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+				chart.draw(data, options);
+				
+				var rectTags = $("rect");
+				rectTags.each(function(idx, el){
+					var jqel = $(el);
+					if(jqel.attr("width")){
+						if (parseInt(jqel.attr("width")) == 1) {
+							jqel.attr("width", 0);
+						}
+					}
+				});
+			}
+			
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart2);
+		</script>
+	</body>
+</html>
